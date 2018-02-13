@@ -1,6 +1,6 @@
 " ─────────────────────────────────────────────────────────────────────────────┐
 "
-" Name:    elems/lightline.vim.tt
+" Name:    elems/plugins/langs/markdown.vim.tt
 " Summary: vim configuration.
 " Authors:
 "   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
@@ -29,33 +29,29 @@
 "
 " ─────────────────────────────────────────────────────────────────────────────┘
 <% define_locals do
-  prefixed(:"lightline.", as: :lightline_) do
-    variable :colorscheme  , type: :string
-  end
-end -%>
+  variable :web_browser
+end %>
 " ─────────────────────────────────────────────────────────────────────────────┘
 
+
 " ────────────────────────────────────────────────────────────── Declaration ──┐
-function! plugins#lightline#declare() abort
-    Plug 'itchyny/lightline.vim'
+function! plugins#langs#markdown#declare() abort
+  Plug 'shime/vim-livedown'
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 " ──────────────────────────────────────────────────────────── Configuration ──┐
-" ───────────────────────────────────────────────────── Settings ← Configure ──┤
-function! plugins#lightline#configure() abort
-    let g:lightline = {
-      \ 'colorscheme': '<%= local! :lightline_colorscheme %>',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+function! plugins#langs#markdown#configure() abort
+  " should markdown preview get shown automatically upon opening markdown buffer
+  let g:livedown_autorun = 0
+
+  " should the browser window pop-up upon previewing
+  let g:livedown_open = 1
+
+  " the port on which Livedown server will run
+  let g:livedown_port = 1337
+
+  " the browser to use
+  let g:livedown_browser = "<%= local! :web_browser %>"
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
-
-
-" vim: set filetype=eruby.vim :

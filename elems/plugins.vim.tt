@@ -48,6 +48,10 @@ call plugins#template#declare()
 call plugins#ale#declare()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#declare()
+" ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
+<% if has_feature? :markdown %>
+call plugins#langs#markdown#declare()
+<% end %>
 " ─────────────────────────────────────────────────────────────────────────────┘
 call plug#end()
 " ─────────────────────────────────────────────────────────────────────────────┘
@@ -65,6 +69,10 @@ call plugins#template#configure()
 call plugins#ale#configure()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#configure()
+" ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
+<% if has_feature? :markdown %>
+call plugins#langs#markdown#configure()
+<% end %>
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 

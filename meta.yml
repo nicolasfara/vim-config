@@ -14,7 +14,7 @@ elems:
 
   - src:  ^(vimrc)$
     dst:  '<%= var! "vim.rc" %>'
-    only: f?vim 
+    only: f?vim
 
   - src:  ^((?!.*vimrc).+)$
     dst:  '<%= get_var! :"vim.base_dir", type: :directory %>/<1>'
