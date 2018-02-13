@@ -1,0 +1,45 @@
+# => inherits: generic, vim-userwide, backups-swap, lightline-theme <= #
+
+colorscheme:
+    name: jellybeans
+
+fonts:
+    main:
+        has_italic: false
+
+vim:
+    terminal:
+        cmd: st
+
+    wiki:
+        dirs:
+            syntax: markdown
+            ext:    .md
+
+features:
+  # Langs
+  - c
+  - cpp
+  - objc
+  - objcpp
+  - ruby
+  - python
+  - javascript
+  - typescript
+  - tex
+  - plantuml
+  - haskell
+  - rust
+  - powershell
+  - bro
+  - salt
+  - xml
+  - markdown
+#  - mono
+#  - go
+  # Tools
+  - dasht
+  - figlet
+
+
+# vim: set filetype=eruby.yaml :

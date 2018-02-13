@@ -1,0 +1,52 @@
+" ─────────────────────────────────────────────────────────────────────────────┐
+"
+" Name:    elems/colorscheme.vim.tt
+" Summary: vim configuration.
+" Authors:
+"   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
+"
+" Project:
+"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Getting started: see README.md in the project root folder
+"
+" License: Apache v2.0 (see below)
+"
+" ─────────────────────────────────────────────────────────────────────────────┤
+"
+" Copyright  2018
+"
+" Licensed under the Apache License, Version 2.0 (the "License");
+" you may not use this file except in compliance with the License.
+" You may obtain a copy of the License at
+"
+" http://www.apache.org/licenses/LICENSE-2.0
+"
+" Unless required by applicable law or agreed to in writing, software
+" distributed under the License is distributed on an "AS IS" BASIS,
+" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+" or implied. See the License for the specific language governing
+" permissions and limitations under the License.
+"
+" ─────────────────────────────────────────────────────────────────────────────┘
+<% define_locals do
+  prefixed(:"colorscheme.", as: :colorscheme_) do
+    variable :name, type: :string
+  end
+end %>
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+" ──────────────────────────────────────────────────────────────── Utilities ──┐
+function! s:has_colorscheme(name)
+  let l:pat='colors/' . a:name . '.vim'
+  return !empty(globpath(&rtp, l:pat))
+endfunction
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+" Set the colorscheme kind (`dark` or `light`).
+set background=dark
+
+" Set colorscheme.
+colorscheme <%= local! :colorscheme_name %>
+
+
+" vim: set filetype=eruby.vim :

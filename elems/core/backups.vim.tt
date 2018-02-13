@@ -1,0 +1,56 @@
+" ─────────────────────────────────────────────────────────────────────────────┐
+"
+" Name:    elems/core/backups.vim.tt
+" Summary: vim configuration.
+" Authors:
+"   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
+"
+" Project:
+"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Getting started: see README.md in the project root folder
+"
+" License: Apache v2.0 (see below)
+"
+" ─────────────────────────────────────────────────────────────────────────────┤
+"
+" Copyright  2018
+"
+" Licensed under the Apache License, Version 2.0 (the "License");
+" you may not use this file except in compliance with the License.
+" You may obtain a copy of the License at
+"
+" http://www.apache.org/licenses/LICENSE-2.0
+"
+" Unless required by applicable law or agreed to in writing, software
+" distributed under the License is distributed on an "AS IS" BASIS,
+" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+" or implied. See the License for the specific language governing
+" permissions and limitations under the License.
+"
+" ─────────────────────────────────────────────────────────────────────────────┘
+<% define_locals do
+  prefixed(:"vim.") do
+    variable :backups_dir
+    variable :swaps_dir
+  end
+end %>
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+
+" ────────────────────────────────────────────────────────────────── Backups ──┤
+" Enable files backups.
+set backup
+" Set the directory for saving files backups.
+set backupdir=<%= local! :backups_dir %>
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, 'p')
+endif
+" ───────────────────────────────────────────────────────────────────── Swap ──┤
+" Set the directory for saving swap files.
+set directory=<%= local! :swaps_dir %>
+if !isdirectory(&directory)
+  call mkdir(&directory, 'p')
+endif
+" Delay for writing swap on disk.
+set updatetime=1024
+" ─────────────────────────────────────────────────────────────────────────────┘

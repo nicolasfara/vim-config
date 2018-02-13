@@ -1,0 +1,100 @@
+" ─────────────────────────────────────────────────────────────────────────────┐
+"
+" Name:    elems/colorscheme.vim.tt
+" Summary: vim configuration.
+" Authors:
+"   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
+"
+" Project:
+"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Getting started: see README.md in the project root folder
+"
+" License: Apache v2.0 (see below)
+"
+" ─────────────────────────────────────────────────────────────────────────────┤
+"
+" Copyright  2018
+"
+" Licensed under the Apache License, Version 2.0 (the "License");
+" you may not use this file except in compliance with the License.
+" You may obtain a copy of the License at
+"
+" http://www.apache.org/licenses/LICENSE-2.0
+"
+" Unless required by applicable law or agreed to in writing, software
+" distributed under the License is distributed on an "AS IS" BASIS,
+" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+" or implied. See the License for the specific language governing
+" permissions and limitations under the License.
+"
+" ─────────────────────────────────────────────────────────────────────────────┘
+<% define_locals do
+  variable :"vim.base_dir", as: :base_dir, type: :directory
+end %>
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+" ──────────────────────────────────────────────────────── Utility functions ──┐
+" Check if the testing vim configuration is available.
+function! s:has_vimrc_test() abort
+  return filereadable(expand('~/.vimrc-test.vim'))
+endfunction
+" Load the testing vim configuration.
+function! s:source_vimrc_test() abort
+  exe 'source ' . expand('~/.vimrc-test.vim')
+endfunction
+" Load a configuration file providing a path relative to the base directory
+" of this file.
+" The relative path can be either:
+" - A directory containing '*.vim' files.
+" - A path to a single file ('.vim' can be omitted).
+function! s:source_rc(rel_path) abort
+  let l:path = '<%= local! :base_dir %>/' . a:rel_path
+  if l:path !~# '.*\.disabled$'
+    if isdirectory(l:path)
+      for l:file_path in split(globpath(l:path, '*.vim'), '\n')
+        exe 'source ' . l:file_path
+      endfor
+    elseif filereadable(l:path)
+      exe 'source ' . l:path
+    elseif filereadable(l:path . '.vim')
+      exe 'source ' . l:path . '.vim'
+    else
+      echoerr 'Failed to load ' . l:path
+    end
+  else
+    echomsg 'Skipped loading of ' . l:path . ' because it is disabled'
+  end
+endfunction
+" ────────────────────────────────────────────────────────────── Entry point ──┤
+" Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+if !has('nvim')
+  " Disable vi-compatibility.
+  if &compatible
+    set nocompatible
+  endif
+endif
+" Load testing or normal vim configuration.
+if s:has_vimrc_test()
+  call s:source_vimrc_test()
+else
+
+  " Load plugins settings.
+  call s:source_rc('plugins')
+
+  " Load the plugins.
+  call s:source_rc('plugins.vim')
+
+  call s:source_rc('colorscheme.vim')
+
+  filetype plugin indent on
+  syntax enable
+
+  call s:source_rc('core')
+  call s:source_rc('contrib')
+
+
+  " !! AGGIUNGERE ALTRE RISORSE SE CREATE !!
+
+endif
+" ─────────────────────────────────────────────────────────────────────────────┘

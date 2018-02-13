@@ -1,0 +1,3 @@
+vim:
+  backups_dir: ~/.vimbackup
+  swaps_dir:   ~/.vimswap
