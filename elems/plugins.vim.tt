@@ -42,6 +42,12 @@ call plug#begin('<%= local! :cache_dir %>')
 call plugins#lightline#declare()
 " ────────────────────────────────────────── Colorscheme ← Declare ← Plugins ──┤
 call plugins#colorscheme#declare()
+" ───────────────────────────────────────────── Template ← Declare ← Plugins ──┤
+call plugins#template#declare()
+" ───────────────────────────────────────── Syntax Check ← Declare ← Plugins ──┤
+call plugins#ale#declare()
+" ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
+call plugins#deoplete#declare()
 " ─────────────────────────────────────────────────────────────────────────────┘
 call plug#end()
 " ─────────────────────────────────────────────────────────────────────────────┘
@@ -53,6 +59,12 @@ call plug#end()
 call plugins#lightline#configure()
 " ──────────────────────────────────────── Colorscheme ← Configure ← Plugins ──┤
 call plugins#colorscheme#configure()
+" ─────────────────────────────────────────── Template ← Configure ← Plugins ──┤
+call plugins#template#configure()
+" ───────────────────────────────────────── Syntax Check ← Declare ← Plugins ──┤
+call plugins#ale#configure()
+" ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
+call plugins#deoplete#configure()
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 
