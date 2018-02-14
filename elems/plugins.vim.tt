@@ -37,7 +37,7 @@ end -%>
 " ──────────────────────────────────────────────────────── Declare ← Plugins ──┐
 call plug#begin('<%= local! :cache_dir %>')
 " ────────────────────────────────────────────── Editing ← Declare ← Plugins ──┤
-
+call plugins#surround#declare()
 " ─────────────────────────────────────────── Statusline ← Declare ← Plugins ──┤
 call plugins#lightline#declare()
 " ────────────────────────────────────────── Colorscheme ← Declare ← Plugins ──┤
@@ -46,6 +46,8 @@ call plugins#colorscheme#declare()
 call plugins#template#declare()
 " ───────────────────────────────────────── Syntax Check ← Declare ← Plugins ──┤
 call plugins#ale#declare()
+" ────────────────────────────────────────────────── VCS ← Declare ← Plugins ──┤
+call plugins#fugitive#declare()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#declare()
 " ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤

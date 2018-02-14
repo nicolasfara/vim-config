@@ -1,7 +1,7 @@
 " ─────────────────────────────────────────────────────────────────────────────┐
 "
-" Name:    elems/plugin/template.vim.tt
-" Summary: vim configuration.
+" Name:    fugitive.vim.tt
+" Summary: %TODO%
 " Authors:
 "   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
 "
@@ -28,26 +28,14 @@
 " permissions and limitations under the License.
 "
 " ─────────────────────────────────────────────────────────────────────────────┘
-<% define_locals do
-  variable :"vim.template_dirs", as: :template_dirs
-end %>
-" ─────────────────────────────────────────────────────────────────────────────┘
+
+
 
 " ────────────────────────────────────────────────────────────── Declaration ──┐
-function! plugins#template#declare() abort
-  Plug 'aperezdc/vim-template'
+function! plugins#fugitive#declare() abort
+  Plug 'tpope/vim-fugitive'
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
-" ──────────────────────────────────────────────────────────── Configuration ──┐
-function! plugins#template#configure() abort
-  " Set shell for `zsh`
-  if has('unix')
-    set shell=/bin/zsh
-  endif
 
-  let g:templates_directory = [<%= local!(:template_dirs).map{ |t| "'#{t}'" }.join(", ") %>]
-  let g:email = "nicolas.farabegoli@gmail.com"
-  let g:user = "nicolasfara"
-endfunction
-" ─────────────────────────────────────────────────────────────────────────────┘
+" vim: set filetype=eruby.vim :
