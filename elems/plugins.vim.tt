@@ -38,6 +38,7 @@ end -%>
 call plug#begin('<%= local! :cache_dir %>')
 " ────────────────────────────────────────────── Editing ← Declare ← Plugins ──┤
 call plugins#surround#declare()
+call plugins#table_mode#declare()
 " ─────────────────────────────────────────── Statusline ← Declare ← Plugins ──┤
 call plugins#lightline#declare()
 " ────────────────────────────────────────── Colorscheme ← Declare ← Plugins ──┤
@@ -50,17 +51,20 @@ call plugins#ale#declare()
 call plugins#fugitive#declare()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#declare()
+call plugins#lexima#declare()
 " ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
 <% if has_feature? :markdown %>
 call plugins#langs#markdown#declare()
 <% end %>
+" ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
+call plugins#sudoedit#declare()
 " ─────────────────────────────────────────────────────────────────────────────┘
 call plug#end()
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 " ────────────────────────────────────────────────────── Configure ← Plugins ──┐
 " ──────────────────────────────────────────── Editing ← Configure ← Plugins ──┤
-
+call plugins#table_mode#configure()
 " ───────────────────────────────────────── Statusline ← Configure ← Plugins ──┤
 call plugins#lightline#configure()
 " ──────────────────────────────────────── Colorscheme ← Configure ← Plugins ──┤
@@ -71,10 +75,13 @@ call plugins#template#configure()
 call plugins#ale#configure()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#configure()
+call plugins#lexima#configure()
 " ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
 <% if has_feature? :markdown %>
 call plugins#langs#markdown#configure()
 <% end %>
+" ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
+call plugins#sudoedit#configure()
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 

@@ -1,0 +1,57 @@
+" ─────────────────────────────────────────────────────────────────────────────┐
+"
+" Name:    table-mode.vim.tt
+" Summary: %TODO%
+" Authors:
+"   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
+"
+" Project:
+"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Getting started: see README.md in the project root folder
+"
+" License: Apache v2.0 (see below)
+"
+" ─────────────────────────────────────────────────────────────────────────────┤
+"
+" Copyright  2018
+"
+" Licensed under the Apache License, Version 2.0 (the "License");
+" you may not use this file except in compliance with the License.
+" You may obtain a copy of the License at
+"
+" http://www.apache.org/licenses/LICENSE-2.0
+"
+" Unless required by applicable law or agreed to in writing, software
+" distributed under the License is distributed on an "AS IS" BASIS,
+" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+" or implied. See the License for the specific language governing
+" permissions and limitations under the License.
+"
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+
+
+" ────────────────────────────────────────────────────────────── Declaration ──┐
+function! plugins#table_mode#declare() abort
+  Plug 'dhruvasagar/vim-table-mode'
+endfunction
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+" ──────────────────────────────────────────────────────────── Configuration ──┐
+function! plugins#table_mode#configure() abort
+  function! s:isAtStartOfLine(mapping)
+    let g:table_mode_corner='|'
+    let text_before_cursor = getline('.')[0 : col('.')-1]
+    let mapping_pattern = '\V' . escape(a:mapping, '\')
+    let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+    return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+endfunction
+" ─────────────────────────────────────────────────────────────────────────────┘
