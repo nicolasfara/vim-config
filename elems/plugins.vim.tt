@@ -51,10 +51,17 @@ call plugins#ale#declare()
 call plugins#fugitive#declare()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#declare()
+call plugins#neosnippet#declare()
 call plugins#lexima#declare()
 " ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
 <% if has_feature? :markdown %>
 call plugins#langs#markdown#declare()
+<% end %>
+<% if has_feature? :c, :cpp, :objc, :objcpp, match: :any? %>
+call plugins#langs#c_based#declare()
+<% end %>
+<% if has_feature? :python %>
+call plugins#langs#python#declare()
 <% end %>
 " ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
 call plugins#sudoedit#declare()
@@ -75,10 +82,17 @@ call plugins#template#configure()
 call plugins#ale#configure()
 " ────────────────────────────── AutoComplete & Snippets ← Declare ← Plugins ──┤
 call plugins#deoplete#configure()
+call plugins#neosnippet#configure()
 call plugins#lexima#configure()
 " ──────────────────────────────────────────────── Langs ← Declare ← Plugins ──┤
 <% if has_feature? :markdown %>
 call plugins#langs#markdown#configure()
+<% end %>
+<% if has_feature? :c, :cpp, :objc, :objcpp, match: :any? %>
+call plugins#langs#c_based#configure()
+<% end %>
+<% if has_feature? :python %>
+call plugins#langs#python#configure()
 <% end %>
 " ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
 call plugins#sudoedit#configure()
