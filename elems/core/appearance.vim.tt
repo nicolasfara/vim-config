@@ -39,6 +39,10 @@ set number
 set textwidth=80
 " Show the color column.
 set colorcolumn=80
+" ───────────────────────────────────────────────────────────────── Modeline ──┤
+set modeline
+" The number of lines that is checked for set commands.
+set modelines=5
 " ─────────────────────────────────────────────────────────────────── Cursor ──┤
 " Show horizontal line under cursor.
 set cursorline

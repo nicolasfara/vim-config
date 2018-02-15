@@ -39,6 +39,7 @@ call plug#begin('<%= local! :cache_dir %>')
 " ────────────────────────────────────────────── Editing ← Declare ← Plugins ──┤
 call plugins#surround#declare()
 call plugins#table_mode#declare()
+call plugins#indentline#declare()
 " ─────────────────────────────────────────── Statusline ← Declare ← Plugins ──┤
 call plugins#lightline#declare()
 " ────────────────────────────────────────── Colorscheme ← Declare ← Plugins ──┤
@@ -75,6 +76,7 @@ call plug#end()
 " ────────────────────────────────────────────────────── Configure ← Plugins ──┐
 " ──────────────────────────────────────────── Editing ← Configure ← Plugins ──┤
 call plugins#table_mode#configure()
+call plugins#indentline#configure()
 " ───────────────────────────────────────── Statusline ← Configure ← Plugins ──┤
 call plugins#lightline#configure()
 " ──────────────────────────────────────── Colorscheme ← Configure ← Plugins ──┤
