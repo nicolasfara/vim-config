@@ -63,6 +63,9 @@ call plugins#langs#c_based#declare()
 <% if has_feature? :python %>
 call plugins#langs#python#declare()
 <% end %>
+<% if has_feature? :tex%>
+call plugins#langs#tex#declare()
+<% end %>
 " ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
 call plugins#sudoedit#declare()
 " ─────────────────────────────────────────────────────────────────────────────┘
@@ -93,6 +96,9 @@ call plugins#langs#c_based#configure()
 <% end %>
 <% if has_feature? :python %>
 call plugins#langs#python#configure()
+<% end %>
+<% if has_feature? :tex%>
+call plugins#langs#tex#configure()
 <% end %>
 " ───────────────────────────────────── Files Management ← Declare ← Plugins ──┤
 call plugins#sudoedit#configure()

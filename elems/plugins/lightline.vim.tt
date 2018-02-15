@@ -54,6 +54,8 @@ function! plugins#lightline#configure() abort
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+    set noshowmode
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
