@@ -1,12 +1,12 @@
 " ─────────────────────────────────────────────────────────────────────────────┐
 "
-" Name:    elems/lightline.vim.tt
-" Summary: vim configuration.
+" Name:    indentline.vim.tt
+" Summary: %TODO%
 " Authors:
 "   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
 "
 " Project:
-"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Homepage:        https://github.com/nicolasfara/
 "   - Getting started: see README.md in the project root folder
 "
 " License: Apache v2.0 (see below)
@@ -28,36 +28,23 @@
 " permissions and limitations under the License.
 "
 " ─────────────────────────────────────────────────────────────────────────────┘
-<% define_locals do
-  prefixed(:"lightline.", as: :lightline_) do
-    variable :colorscheme  , type: :string
-  end
-end -%>
-" ─────────────────────────────────────────────────────────────────────────────┘
+
 
 " ────────────────────────────────────────────────────────────── Declaration ──┐
-function! plugins#lightline#declare() abort
-    Plug 'itchyny/lightline.vim'
+function! plugins#indentline#declare() abort
+  Plug 'Yggdroot/indentLine'
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 " ──────────────────────────────────────────────────────────── Configuration ──┐
-" ───────────────────────────────────────────────────── Settings ← Configure ──┤
-function! plugins#lightline#configure() abort
-    let g:lightline = {
-      \ 'colorscheme': '<%= local! :lightline_colorscheme %>',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
-    set noshowmode
+function! plugins#indentline#configure() abort
+  " Character to be used for indentation.
+  let g:indentLine_char='┆'
+  " Support `cursorline`.
+  let g:indentLine_concealcursor=''
+  if !has('nvim')
+    " Better performance.
+    let g:indentLine_faster=1
+  endif
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
-
-
-" vim: set filetype=eruby.vim :

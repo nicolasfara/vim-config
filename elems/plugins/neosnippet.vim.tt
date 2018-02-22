@@ -1,12 +1,12 @@
 " ─────────────────────────────────────────────────────────────────────────────┐
 "
-" Name:    elems/core/apperance.vim.tt
-" Summary: vim configuration.
+" Name:    neosnippet.vim.tt
+" Summary: %TODO%
 " Authors:
 "   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
 "
 " Project:
-"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Homepage:        https://github.com/nicolasfara/
 "   - Getting started: see README.md in the project root folder
 "
 " License: Apache v2.0 (see below)
@@ -29,25 +29,29 @@
 "
 " ─────────────────────────────────────────────────────────────────────────────┘
 
-" ─────────────────────────────────────────────────────────────── Statusline ──┐
-" Always show the statusline.
-set laststatus=2
-" ─────────────────────────────────────────────────────────────────── Column ──┤
-" Display column numbers.
-set number
-" Set the maximum line length.
-set textwidth=80
-" Show the color column.
-set colorcolumn=80
-" ───────────────────────────────────────────────────────────────── Modeline ──┤
-set modeline
-" The number of lines that is checked for set commands.
-set modelines=5
-" ─────────────────────────────────────────────────────────────────── Cursor ──┤
-" Show horizontal line under cursor.
-set cursorline
-" Number of context lines you would like to see above and below the cursor.
-set scrolloff=6
+
+" ────────────────────────────────────────────────────────────── Declaration ──┐
+function! plugins#neosnippet#declare() abort
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
+endfunction
+" ─────────────────────────────────────────────────────────────────────────────┘
+
+" ──────────────────────────────────────────────────────────── Configuration ──┐
+function! plugins#neosnippet#configure() abort
+  " Plugin key-mappings.
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+
+  " SuperTab like snippets behavior.
+  imap <expr><TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 
