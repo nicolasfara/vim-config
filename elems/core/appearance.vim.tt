@@ -49,6 +49,6 @@ set cursorline
 " Number of context lines you would like to see above and below the cursor.
 set scrolloff=6
 " ─────────────────────────────────────────────────────────────────────────────┘
-
+set clipboard=unnamedplus
 
 " vim: set filetype=eruby.vim :
