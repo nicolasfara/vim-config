@@ -39,6 +39,9 @@ function! plugins#deoplete#declare() abort
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
+  Plug 'Shougo/neopairs.vim'
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'Shougo/echodoc.vim'
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
