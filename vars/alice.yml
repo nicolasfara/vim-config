@@ -1,4 +1,4 @@
-# => inherits: generic, vim-userwide, backups-swap, lightline-theme, with-chromium <= #
+# => inherits: generic, vim-userwide, backups-swap, lightline-theme, with-firefox <= #
 
 colorscheme:
     name: jellybeans
