@@ -1,19 +1,19 @@
 " ─────────────────────────────────────────────────────────────────────────────┐
 "
-" Name:    elems/plugins/ale.vim.tt
-" Summary: vim configuration.
+" Name:    blade.vim.tt
+" Summary: %TODO%
 " Authors:
 "   - Nicolas Farabegoli <nicolas.farabegoli@gmail.com> (nicolasfara)
 "
 " Project:
-"   - Homepage:        https://github.com/nicolasfara/vim-config
+"   - Homepage:        https://github.com/nicolasfara/
 "   - Getting started: see README.md in the project root folder
 "
 " License: Apache v2.0 (see below)
 "
 " ─────────────────────────────────────────────────────────────────────────────┤
 "
-" Copyright  2018
+" Copyright  2019
 "
 " Licensed under the Apache License, Version 2.0 (the "License");
 " you may not use this file except in compliance with the License.
@@ -30,29 +30,25 @@
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 
+
 " ────────────────────────────────────────────────────────────── Declaration ──┐
-function! plugins#ale#declare() abort
-  Plug 'w0rp/ale'
+function! plugins#blade#declare() abort
+  Plug 'jwalton512/vim-blade'
 endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
 
 " ──────────────────────────────────────────────────────────── Configuration ──┐
-function! plugins#ale#configure() abort
-  " Enable completition
-  let g:ale_completion_enabled = 1
-
-  " Symbols for linting
-  let g:ale_sign_error = '*'
-  let g:ale_sign_warning = '!'
-
-  " Set this to enabling highlighting
-  let g:ale_set_highlights = 1
-
-  " Formatting message status
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-endfunction
+function! plugins#blade#configure() abort
+  " Define some single Blade directives. This variable is used for highlighting only.
+  let g:blade_custom_directives = ['datetime', 'javascript']
+  " Define pairs of Blade directives. This variable is used for highlighting and indentation.
+  let g:blade_custom_directives_pairs = {
+        \   'markdown': 'endmarkdown',
+        \   'cache': 'endcache',
+        \ }
+  endfunction
 " ─────────────────────────────────────────────────────────────────────────────┘
+
+
 
 " vim: set filetype=eruby.vim :

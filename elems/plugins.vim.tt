@@ -41,6 +41,7 @@ call plugins#surround#declare()
 call plugins#table_mode#declare()
 call plugins#indentline#declare()
 call plugins#closetag#declare()
+call plugins#blade#declare()
 " ─────────────────────────────────────────── Statusline ← Declare ← Plugins ──┤
 call plugins#lightline#declare()
 " ────────────────────────────────────────── Colorscheme ← Declare ← Plugins ──┤
@@ -79,6 +80,7 @@ call plug#end()
 call plugins#table_mode#configure()
 call plugins#indentline#configure()
 call plugins#closetag#configure()
+call plugins#blade#configure()
 " ───────────────────────────────────────── Statusline ← Configure ← Plugins ──┤
 call plugins#lightline#configure()
 " ──────────────────────────────────────── Colorscheme ← Configure ← Plugins ──┤
